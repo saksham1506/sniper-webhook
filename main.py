@@ -4,7 +4,7 @@ import os
 
 app = Flask(__name__)
 
-# Replace with your Dhan credentials
+# Your Dhan credentials
 DHAN_ACCESS_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkaGFuIiwicGFydG5lcklkIjoiIiwiZXhwIjoxNzUwMDE0NDE3LCJ0b2tlbkNvbnN1bWVyVHlwZSI6IlNFTEYiLCJ3ZWJob29rVXJsIjoiaHR0cHM6Ly9hcGkuZGhhbi5jbyIsImRoYW5DbGllbnRJZCI6IjExMDI4MjM0ODUifQ.wa8v47rQy5nX1m9GG2pHIcvmSuzqkiOJDkd8j9QVhC6ouXMsX_4m8qpD1HS-7j850lrso6yciHNWKBiHcr43xg"
 CLIENT_ID = "1102823485"
 
@@ -16,11 +16,11 @@ def place_order(symbol, side, qty):
     }
 
     payload = {
-        "exchangeSegment": "MCX_COMM",
+        "exchangeSegment": "MCX_COMM",                   # Corrected
         "productType": "INTRADAY",
         "orderType": "MARKET",
-        "transactionType": "BUY" if side.upper() == "BUY" else "SELL",
-        "orderSide": side.upper(),
+        "transactionType": "BUY" if side == "BUY" else "SELL",  # Correct values
+        "orderSide": side,                               # Still required
         "instrumentId": symbol,
         "quantity": qty,
         "price": 0,
