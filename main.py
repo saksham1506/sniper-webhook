@@ -18,7 +18,7 @@ def place_order(symbol, side, qty):
         "exchangeSegment": "MCX_COMM",
         "productType": "INTRADAY",
         "orderType": "MARKET",
-        "transactionType": "NORMAL",
+        "transactionType": side.upper(),
         "orderSide": side.upper(),
         "instrumentId": symbol,
         "quantity": qty,
