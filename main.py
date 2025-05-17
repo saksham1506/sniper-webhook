@@ -1,5 +1,6 @@
 from flask import Flask, request
 import requests
+import os
 
 app = Flask(__name__)
 
@@ -18,7 +19,7 @@ def place_order(symbol, side, qty):
         "exchangeSegment": "MCX_COMM",
         "productType": "INTRADAY",
         "orderType": "MARKET",
-        "transactionType": side.upper(),
+        "transactionType": side.upper(),     # Corrected
         "orderSide": side.upper(),
         "instrumentId": symbol,
         "quantity": qty,
@@ -30,8 +31,16 @@ def place_order(symbol, side, qty):
         "validity": "DAY"
     }
 
+    print("\n✅ PAYLOAD SENT TO DHAN:")
+    print(payload)
+
     res = requests.post("https://api.dhan.co/orders", headers=headers, json=payload)
+
+    print("\n📩 RESPONSE RECEIVED FROM DHAN:")
+    print(res.status_code, res.text)
+
     return res.status_code, res.json()
+
 
 @app.route('/', methods=['POST'])
 def webhook():
@@ -49,9 +58,7 @@ def webhook():
 
     return {"status": status, "response": res}
 
-import os
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port)
-
