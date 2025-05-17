@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 # Replace with your Dhan credentials
 DHAN_ACCESS_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkaGFuIiwicGFydG5lcklkIjoiIiwiZXhwIjoxNzUwMDE0NDE3LCJ0b2tlbkNvbnN1bWVyVHlwZSI6IlNFTEYiLCJ3ZWJob29rVXJsIjoiaHR0cHM6Ly9hcGkuZGhhbi5jbyIsImRoYW5DbGllbnRJZCI6IjExMDI4MjM0ODUifQ.wa8v47rQy5nX1m9GG2pHIcvmSuzqkiOJDkd8j9QVhC6ouXMsX_4m8qpD1HS-7j850lrso6yciHNWKBiHcr43xg"
-CLIENT_ID = "1102823485"
+CLIENT_ID = "1102823485"https://github.com/saksham1506/sniper-webhook/edit/main/main.py
 
 def place_order(symbol, side, qty):
     headers = {
@@ -18,6 +18,7 @@ def place_order(symbol, side, qty):
         "exchangeSegment": "MCX_COMM",
         "productType": "INTRADAY",
         "orderType": "MARKET",
+        "transactionType": "NORMAL",
         "orderSide": side.upper(),
         "instrumentId": symbol,
         "quantity": qty,
