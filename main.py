@@ -15,7 +15,7 @@ def place_order(symbol, side, qty):
     }
 
     payload = {
-        "exchangeSegment": "MCX",
+        "exchangeSegment": "MCX_COMM",
         "productType": "INTRADAY",
         "orderType": "MARKET",
         "orderSide": side.upper(),
